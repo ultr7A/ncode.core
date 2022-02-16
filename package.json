@@ -1,0 +1,14 @@
+{
+  "name": "wrapt.co_re",
+  "version": "1.0.0",
+  "description": "Shared domain model for Wrapt.org programming language, runtime-environment, and tooling.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Evans<openspacehexagon@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}

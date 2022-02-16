@@ -1,2 +1,3 @@
-# wrapt.co-re
-Shared domain-model for wrapt.org compiler, shell, and tool-chain.
+# Wrapt.co_re
+
+Shared domain model and utilities for wrapt.org programming language.
