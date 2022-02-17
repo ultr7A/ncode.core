@@ -1,10 +1,7 @@
-// import { ConceptExpression } from "../../1_Structure_🌴/1_ast/0_1_0_structure-concept";
-// import { GraphOperator } from "../../1_Structure_🌴/1_ast/1_1_0_expression-elements";
-
 import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
+import { ConceptExpression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
+import { GraphOperator } from "../syntax/1_1_0_expression-elements";
 import { EObject, FunctionObject } from "./0_1_object-structure";
-
-//import { EObject, FunctionObject, ObjectType } from "./0_1_object-structure";
 
 export class ClassMethodObject {
     constructor(
