@@ -1,6 +1,5 @@
 
-import { Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
-import { GraphNodeObject, GraphEdgeObject } from "./0_2_object-elements";
+import { IBlockStatement, IIdentifier, Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
 import { Environment } from "./1_4_0_environment";
 
 
@@ -38,15 +37,15 @@ export interface StructureObject<K extends JSIndexType, E extends EObject> exten
 
 
 export interface FunctionObject extends EObject {
-    Parameters?: Identifier[];
+    Parameters?: IIdentifier[];
     Fn?: BuiltinFunction;
     ReturnType?: string;
     ParameterTypes?: string[];
 }
 
 export interface DynamicFunction extends FunctionObject {
-    Parameters: Identifier[];
-    Body: BlockStatement;
+    Parameters: IIdentifier[];
+    Body: IBlockStatement;
     Env?: Environment;
     ReturnType?: string;
     ParameterTypes?: string[];
@@ -60,40 +59,3 @@ export type BuiltinFunction<T extends {} = any> = (
     ...args: any[]
 ) => any;
 
-
-export class AbstractGraphObject<V extends EObject = EObject, O = GraphOperator> {
-    protected idCounter = 0;
-
-    constructor(
-        public Nodes: GraphNodeObject<V, O>[],
-        public Edges: GraphEdgeObject<V, O>[]
-    ) { }
-
-    public addNode(object: V, id?: string): void {
-        this.Nodes.push(new GraphNodeObject<V, O>(this, object, id || (this.idCounter++) + ""))
-    }
-
-    public removeNode(id: string): void {
-        this.Nodes.splice(this.Nodes.indexOf(this.Nodes.find(node => node.Id === id)), 1);
-    }
-
-    public addEdge(from: string, to: string, operator: O): void {
-        this.Edges.push(new GraphEdgeObject<V, O>(this, from, to, operator))
-    }
-
-    public removeEdge(from: string, to: string, operator: O): void {
-        this.Edges.splice(this.Edges.indexOf(this.Edges.find(
-            edge => edge.From === from && edge.To === to && edge.Operator === operator
-        )), 1);
-    }
-
-    public Inspect(indentLevel = 1): string {
-        let out = "";
-
-        for (const edge of this.Edges) {
-            out += edge.Inspect(indentLevel);
-        }
-
-        return out;
-    }
-}
