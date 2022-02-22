@@ -7,8 +7,9 @@ import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/s
 import { GraphOperator } from "../syntax/1_1_0_expression-elements";
 import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util";
 import { assertBuiltinArgs } from "../util/3_builtin_util";
-import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, AbstractGraphObject, Hashable, InspectionType } from "./0_1_object-structure";
+import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure";
 import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements";
+import { AbstractGraphObject } from "./0_3_abstract-graph-object";
 import { NULL } from "./1_1_object.singleton";
 import { Environment } from "./1_4_0_environment";
 
