@@ -1,5 +1,6 @@
-import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
+import { ObjectType }        from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
 import { ConceptExpression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
+
 import { GraphOperator } from "../syntax/1_1_0_expression-elements";
 import { EObject, FunctionObject } from "./0_1_object-structure";
 

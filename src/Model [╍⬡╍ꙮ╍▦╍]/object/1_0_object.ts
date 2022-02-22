@@ -7,7 +7,7 @@ import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/s
 import { GraphOperator } from "../syntax/1_1_0_expression-elements";
 import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util";
 import { assertBuiltinArgs } from "../util/3_builtin_util";
-import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, AbstractGraphObject, Hashable } from "./0_1_object-structure";
+import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, AbstractGraphObject, Hashable, InspectionType } from "./0_1_object-structure";
 import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements";
 import { NULL } from "./1_1_object.singleton";
 import { Environment } from "./1_4_0_environment";
@@ -340,10 +340,14 @@ export class MobiusObject implements StructureObject<number, EObject> {
 export class GraphObject extends AbstractGraphObject<EObject> 
     implements EObject, IGraphObject<EObject, GraphOperator> {
     constructor(
-        Nodes: GraphNodeObject<EObject, GraphOperator>[],
-        Edges: GraphEdgeObject<EObject, GraphOperator>[]
+        public Nodes: GraphNodeObject<EObject, GraphOperator>[],
+        public Edges: GraphEdgeObject<EObject, GraphOperator>[]
     ) { 
         super(Nodes, Edges);
+    }
+
+    public Inspect(indentLevel?: number): string {
+        return "TODO: implement";
     }
 
     public Type() { return ObjectType.GRAPH_OBJECT; }
@@ -352,10 +356,15 @@ export class GraphObject extends AbstractGraphObject<EObject>
 export class ConceptObject extends AbstractGraphObject<ConceptObject, ConceptOperatorObject> 
     implements EObject, IGraphObject<ConceptObject, ConceptOperatorObject> {
     constructor(
-        Nodes: GraphNodeObject<ConceptObject, ConceptOperatorObject>[],
-        Edges: GraphEdgeObject<ConceptObject, ConceptOperatorObject>[]
+        public Nodes: GraphNodeObject<ConceptObject, ConceptOperatorObject>[],
+        public Edges: GraphEdgeObject<ConceptObject, ConceptOperatorObject>[]
     ) { 
         super(Nodes, Edges);
+    }
+
+    
+    public Inspect(indentLevel?: number): string {
+        return "TODO: implement";
     }
 
     public Type() { return ObjectType.CONCEPT_OBJECT; }
