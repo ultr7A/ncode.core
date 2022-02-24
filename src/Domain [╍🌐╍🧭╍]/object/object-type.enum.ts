@@ -18,7 +18,7 @@ export enum ObjectType {
     ARRAY = "array",
     STREAM = "stream",
 
-    // Opere2ation:
+    // Operation:
     FUNCTION = "function",
     PURE_FUNCTION = "pure_function",
     BUILTIN = "BUILTIN",
