@@ -1,5 +1,6 @@
 
 import { IBlockStatement, IIdentifier, Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
+import { Hash } from "./1_0_object";
 import { Environment } from "./1_4_0_environment";
 
 
@@ -38,7 +39,7 @@ export interface StructureObject<K extends JSIndexType, E extends EObject> exten
 
 export interface FunctionObject extends EObject {
     Parameters?: IIdentifier[];
-    Fn?: BuiltinFunction;
+    Fn?: BuiltinFunction<any>;
     ReturnType?: string;
     ParameterTypes?: string[];
 }
@@ -52,10 +53,9 @@ export interface DynamicFunction extends FunctionObject {
     stateful?: string[];
 }
 
-export type BuiltinFunction<T extends {} = any> = (
+export type BuiltinFunction<ObjectContextType = any> = (
     // context?: WorkerContext, 
-    scope?: Record<string, unknown>,
-    jsScope?: T,
+    scope?: ObjectContextType,
     ...args: any[]
 ) => any;
 

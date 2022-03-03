@@ -1,4 +1,5 @@
 {
-    "window.zoomLevel": 1,
-    "editor.mouseWheelZoom": true
+    "window.zoomLevel": 2,
+    "editor.mouseWheelZoom": true,
+    "workbench.colorTheme": "Userscape (rainglow)"
 }

@@ -1,6 +1,6 @@
 import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
 
-import { BuiltinFunctionObject, ErrorObject, ArrayObject } from "../../object/1_0_object";
+import { BuiltinFunctionObject, ErrorObject, ArrayObject, Hash } from "../../object/1_0_object";
 import { instanceMethodError  } from "../../util/3_0_object-util";
 import { makeBuiltinClass } from "../../util/3_builtin_util";
 
@@ -61,7 +61,8 @@ export const Vector = makeBuiltinClass("Vector",
     ],
     [
     //["data", new object.ArrayObject([])],
-    ["Vector", new BuiltinFunctionObject<IVectorState>("Vector", [],
+    ["Vector", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "Vector", [],
         function(scope, jsScope, data) {
             var vector = new VectorState(data || [0, 0, 0, 1]);
             if (scope) {
@@ -72,7 +73,8 @@ export const Vector = makeBuiltinClass("Vector",
         }),
         []
     ],
-    [/* static */ "add", new BuiltinFunctionObject<IVectorState>("add", [ObjectType.ARRAY],
+    [/* static */ "add", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "add", [ObjectType.ARRAY],
 		function(scope, jsScope, vector, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -81,7 +83,8 @@ export const Vector = makeBuiltinClass("Vector",
         }),
         []
     ],
-    [/* static */ "sub", new BuiltinFunctionObject<IVectorState>("sub", [ObjectType.ARRAY],
+    [/* static */ "sub", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "sub", [ObjectType.ARRAY],
 		function(scope, jsScope, vector, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -90,7 +93,8 @@ export const Vector = makeBuiltinClass("Vector",
         }),
         []
     ],
-    ["addSelf", new BuiltinFunctionObject<IVectorState>("addSelf", [ObjectType.ARRAY],
+    ["addSelf", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "addSelf", [ObjectType.ARRAY],
 		function(scope, jsScope, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -100,7 +104,8 @@ export const Vector = makeBuiltinClass("Vector",
         }, null, ["data"]),
         []
     ],
-    ["subSelf", new BuiltinFunctionObject<IVectorState>("subSelf", [ObjectType.ARRAY],
+    ["subSelf", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "subSelf", [ObjectType.ARRAY],
 		function(scope, jsScope, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -110,7 +115,8 @@ export const Vector = makeBuiltinClass("Vector",
         }, null, ["data"]),
         []
     ],
-    ["dot", new BuiltinFunctionObject<IVectorState>("dot", [ObjectType.ARRAY],
+    ["dot", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "dot", [ObjectType.ARRAY],
 		function(scope, jsScope, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -127,7 +133,8 @@ export const Vector = makeBuiltinClass("Vector",
         }),
         []
     ],
-    [/* static */ "cross", new BuiltinFunctionObject<IVectorState>("cross", [ObjectType.ARRAY, ObjectType.ARRAY],
+    [/* static */ "cross", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "cross", [ObjectType.ARRAY, ObjectType.ARRAY],
 		function(scope, jsScope, vector, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -136,7 +143,8 @@ export const Vector = makeBuiltinClass("Vector",
         }),
         []
     ],
-    ["crossSelf", new BuiltinFunctionObject<IVectorState>("crossSelf", [ObjectType.ARRAY],
+    ["crossSelf", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "crossSelf", [ObjectType.ARRAY],
 		function(scope, jsScope, other) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -146,7 +154,8 @@ export const Vector = makeBuiltinClass("Vector",
         []
     ],
     ["multiplyScalar", builtin_MultiplyScalar, []],
-    ["String", new BuiltinFunctionObject<IVectorState>("String", [],
+    ["String", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "String", [],
 		function(scope, jsScope) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
@@ -155,7 +164,8 @@ export const Vector = makeBuiltinClass("Vector",
         }),
         []
     ],
-    ["List", new BuiltinFunctionObject<IVectorState>("List", [],
+    ["List", new BuiltinFunctionObject<Hash & { Elements: IVectorState, builtins: typeof VectorState }>(
+        "List", [],
 		function(scope, jsScope) {
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);

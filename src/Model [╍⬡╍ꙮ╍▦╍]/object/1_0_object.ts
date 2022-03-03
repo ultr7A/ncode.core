@@ -138,7 +138,7 @@ export class PureFunction implements DynamicFunction {
     }
 }
 
-export class BuiltinFunctionObject<ObjectContextType = any> implements FunctionObject {
+export class BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implements FunctionObject {
     public builtin = true;
     
     constructor(public name: string, public signature: [] | (ObjectType | ObjectType[])[],
