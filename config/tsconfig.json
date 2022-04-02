@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "noResolve": false,
+      "noImplicitAny": false,
+      "declaration": true,
+      "sourceMap": true,
+      "preserveConstEnums":true,
+      "lib": [
+          "es6",
+          "dom"
+      ],
+      "types": [
+        "node",
+        "jest"
+      ],
+      "rootDir": "../src",
+      "outDir":  "../lib"
+    },
+    "include": [
+      "../src/*",
+      "../src/**/*"
+    ]
+  }
