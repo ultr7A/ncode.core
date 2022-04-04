@@ -3,9 +3,9 @@
  *
  */
 
-export namespace PrimitiveConcept {
+// export namespace PrimitiveConcept {
 
-    export enum StructureOperator {
+    export enum ConceptStructureOperator {
         //       ConceptPrecedence.PREPOSITION
         OF       = "(of)",
         AS       = "(as)",
@@ -42,7 +42,7 @@ export namespace PrimitiveConcept {
         NO       = "(no)",
     }
     
-    export enum SequenceOperator {
+    export enum ConceptSequenceOperator {
         //       ConceptPrecedence.LOWEST
         PROJECT  = "(PROJECT)",
         EXTEND   = "(+)",
@@ -56,7 +56,7 @@ export namespace PrimitiveConcept {
         GROUP     = "(group)",
     }
     
-    export enum OperatorOperator {
+    export enum ConceptOperatorOperator {
         //       ConceptPrecedence.IMPERATIVE
         WILL     = "(will)",
         DO       = "(do)",
@@ -71,8 +71,8 @@ export namespace PrimitiveConcept {
     }
     
         
-    export type OperatorType = StructureOperator |
-                                      SequenceOperator  | 
-                                      OperatorOperator;
+    export type ConceptOperatorType = ConceptStructureOperator |
+                                      ConceptSequenceOperator  | 
+                                      ConceptOperatorOperator;
 
-}
+// }

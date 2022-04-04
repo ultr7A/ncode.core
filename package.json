@@ -1,11 +1,12 @@
 {
   "name": "wrapt.co_re",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Shared domain model for Wrapt.org programming language, runtime-environment, and tooling.",
   "type": "module",
   "files": [
     "lib/"
   ],
+  "exports": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p config/tsconfig.json",
