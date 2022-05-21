@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-      "target": "es6",
-      "module": "ESNext",
-      "moduleResolution": "node",
+      "target": "es5",
+      "module": "CommonJS",
+      "moduleResolution": "Node",
       "noResolve": false,
       "noImplicitAny": false,
       "declaration": true,
@@ -18,9 +18,5 @@
       ],
       "rootDir": "../src",
       "outDir":  "../lib"
-    },
-    "include": [
-      "../src/*",
-      "../src/**/*"
-    ]
+    }
   }
