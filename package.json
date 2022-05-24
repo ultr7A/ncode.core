@@ -4,7 +4,7 @@
   "description": "Shared domain model for Wrapt.org programming language, runtime-environment, and tooling.",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p config/tsconfig.json",
+    "build": "tsc",
     "prepublish": "npm run build"
   },
   "author": "Jeremy Evans<openspacehexagon@gmail.com>",
