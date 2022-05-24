@@ -1,5 +1,7 @@
 {
     "window.zoomLevel": 1,
     "editor.mouseWheelZoom": true,
-    "workbench.colorTheme": "Base4Tone_Classic_I_Dark"
+    "workbench.colorTheme": "Default Light+",
+    "editor.fontSize": 15,
+    "editor.fontWeight": "200"
 }

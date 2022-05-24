@@ -8,10 +8,6 @@
       "declaration": true,
       "sourceMap": true,
       "preserveConstEnums":true,
-      "lib": [
-          "es6",
-          "dom"
-      ],
       "types": [
         "node",
         "jest"
