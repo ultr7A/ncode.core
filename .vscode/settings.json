@@ -1,7 +1,8 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "editor.mouseWheelZoom": true,
-    "workbench.colorTheme": "Default Light+",
-    "editor.fontSize": 15,
-    "editor.fontWeight": "200"
+    "workbench.colorTheme": "Sourlick (rainglow)",
+    "editor.fontSize": 12,
+    "editor.fontWeight": "200",
+    "editor.fontFamily": "'JetBrains Mono'"
 }

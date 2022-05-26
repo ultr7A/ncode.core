@@ -64,7 +64,7 @@ export class LambdaFunction implements DynamicFunction {
         public Env: Environment, 
         public Fn?: BuiltinFunction, 
         public ObjectContext?: ClassifiedObject, 
-        public ReturnType?: string,       public ParameterTypes?: string[], 
+        public ReturnType?: string,        public ParameterTypes?: string[], 
         public stateful = null
     ) { }
 
@@ -172,7 +172,7 @@ export class BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implem
 
     public Type() { return ObjectType.BUILTIN }
 
-    public Inspect(indentLevel: number = 1) {
+    public Inspect(indentLevel: number = 1) {                    // \/\/\/ Deprecated???
         let functionSig = this.Fn.toString().split("\n")[0].split("jsScope, ")[1];
         return 'builtin fn' + (indentLevel
             ? "(" + (functionSig
@@ -238,12 +238,6 @@ export class ArrayObject implements SequenceObject<EObject> {
     }
 }
 
-export class ErrorObject implements EObject {
-    constructor(public Message: string) { }
-
-    public Type() { return ObjectType.ERROR };
-    public Inspect() { return "💀  RUNTIME ERROR: " + this.Message; }
-}
 
 export class Hash implements StructureObject<string, EObject> {
     constructor(
@@ -371,3 +365,10 @@ export class ConceptObject extends AbstractGraphObject<ConceptObject, ConceptOpe
     public Type() { return ObjectType.CONCEPT_OBJECT; }
 }
 
+
+export class ErrorObject implements EObject {
+    constructor(public Message: string) { }
+
+    public Type() { return ObjectType.ERROR };
+    public Inspect() { return "💀  RUNTIME ERROR: " + this.Message; }
+}

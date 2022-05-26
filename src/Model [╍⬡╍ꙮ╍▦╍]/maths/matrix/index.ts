@@ -1,29 +1,29 @@
 
-import { builtin_MultiplyScalar } from "./vector";
+import { builtin_MultiplyScalar } from "../vector";
 
 import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
 
 import { BuiltinFunctionObject, ErrorObject, ArrayObject, Integer, Hash } from "../../object/1_0_object";
 import { instanceMethodError  } from "../../util/3_0_object-util";
-import { makeBuiltinClass } from "../../util/3_builtin_util";
+import { makeBuiltinClass }     from "../../util/3_builtin_util";
 
 
 function initMatrix(cols: number, rows: number): number[] {
-    var elements = [];
-    for (var xy = 0, len = rows * cols; xy < len; xy++) {
+    let elements = [];
+    for (let xy = 0, len = rows * cols; xy < len; xy++) {
         elements.push(((xy % cols == Math.floor(xy / rows)) ? 1 : 0));
     }
     return elements;
 }
 
 function get2DArray(scope: { data: number[], columns: number}): number[][] {
-    var cols = scope.columns;
-    var data = scope.data;
-    var out = [];
-    var col = 0;
-    var row = [];
+    let cols = scope.columns;
+    let data = scope.data;
+    let out = [];
+    let col = 0;
+    let row = [];
 
-    for (var el = 0, l = data.length; el < l; el++) {
+    for (let el = 0, l = data.length; el < l; el++) {
         row.push(data[el]);
         col++;
         if (col >= cols) {
@@ -35,16 +35,16 @@ function get2DArray(scope: { data: number[], columns: number}): number[][] {
     return out;
 }
 
-var multiply = function (matColumns: number, matrix: number[], argCols: number, vector: number[]) {
-    var matRows = matrix.length / matColumns;
-    var out = initMatrix(matRows, argCols);
+let multiply = function (matColumns: number, matrix: number[], argCols: number, vector: number[]) {
+    let matRows = matrix.length / matColumns;
+    let out = initMatrix(matRows, argCols);
 
-    var selfRowI = 0;
+    let selfRowI = 0;
     while (selfRowI < matRows) {
-        var argColJ = 0;
+        let argColJ = 0;
         while (argColJ < argCols) {
-            var selfColumnK = 0;
-            var acc = 0;
+            let selfColumnK = 0;
+            let acc = 0;
             while (selfColumnK < matColumns) {
                 acc += (matrix[(selfRowI * matColumns) + selfColumnK]
                                          *
@@ -80,8 +80,8 @@ export const Matrix = makeBuiltinClass("Matrix",
     // ["columns", new Integer(4)], // ALSO TODO: generate getters and or setters for native members based on access modifiers
     ["Matrix", new BuiltinFunctionObject<Hash & { Elements: IMatrixState, builtins: typeof MatrixState }>("Matrix", [ObjectType.INTEGER_OBJ], 
         function(scope, jsScope, columns, data) {
-            var cols = columns ? columns : 4;
-            var matrix = new MatrixState(data || initMatrix(cols, cols), cols);
+            let cols = columns ? columns : 4;
+            let matrix = new MatrixState(data || initMatrix(cols, cols), cols);
 
             if (scope) {
                 scope.builtins = matrix;
@@ -143,9 +143,9 @@ export const Matrix = makeBuiltinClass("Matrix",
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
             }
-            var sine = Math.sin(angle), cosine = Math.cos(angle);
+            let sine = Math.sin(angle), cosine = Math.cos(angle);
             // This should be a JS Array instead of ecs ArrayObject
-            var transform = [
+            let transform = [
                 1, 0, 0, 0,
                 0, cosine, -sine, 0,
                 0, sine, cosine, 0,
@@ -164,8 +164,8 @@ export const Matrix = makeBuiltinClass("Matrix",
             if (!jsScope) {
                 return new ErrorObject(instanceMethodError);
             }
-            var sine = Math.sin(angle), cosine = Math.cos(angle);
-            var transform = [
+            let sine = Math.sin(angle), cosine = Math.cos(angle);
+            let transform = [
                 cosine, 0, -sine, 0,
                 0, 1, 0, 0,
                 sine, 0, cosine, 0,
@@ -178,11 +178,9 @@ export const Matrix = makeBuiltinClass("Matrix",
     ],
     ["rotateZ", new BuiltinFunctionObject<Hash & { Elements: IMatrixState }>("rotateZ", [ObjectType.FLOAT], 
         function(scope, jsScope, angle) {
-            if (!jsScope) {
-                return new ErrorObject(instanceMethodError);
-            }
-            var sine = Math.sin(angle), cosine = Math.cos(angle);
-            var transform = [
+            if (!jsScope) { return new ErrorObject(instanceMethodError); }
+            let sine = Math.sin(angle), cosine = Math.cos(angle);
+            let transform = [
                 cosine, -sine, 0, 0,
                 sine, cosine, 0, 0,
                 0, 0, 1, 0,
@@ -195,10 +193,8 @@ export const Matrix = makeBuiltinClass("Matrix",
     ],
     ["scaleSelf", new BuiltinFunctionObject<Hash & { Elements: IMatrixState }>("scaleSelf", [ObjectType.ARRAY], 
         function( scope, jsScope, vec) {
-            if (!jsScope) {
-                return new ErrorObject(instanceMethodError);
-            }
-            var transform = [
+            if (!jsScope) {     return new ErrorObject(instanceMethodError);    }
+            let transform = [
                 vec[0], 0, 0, 0,
                 0, vec[1], 0, 0,
                 0, 0, vec[2], 0,
@@ -211,10 +207,8 @@ export const Matrix = makeBuiltinClass("Matrix",
     ],
     ["translate", new BuiltinFunctionObject<Hash & { Elements: IMatrixState }>("translate", [ObjectType.ARRAY], 
         function( scope, jsScope, translation) {
-            if (!jsScope) {
-                return new ErrorObject(instanceMethodError);
-            }
-            var transform = [
+            if (!jsScope) {     return new ErrorObject(instanceMethodError);    }
+            let transform = [
                 1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
@@ -227,17 +221,13 @@ export const Matrix = makeBuiltinClass("Matrix",
     ],
     ["get2DArray", new BuiltinFunctionObject<Hash & { Elements: IMatrixState }>("get2DArray", [], 
         function(scope, jsScope) {
-            if (!jsScope) {
-                return new ErrorObject(instanceMethodError);
-            }
+            if (!jsScope) {    return new ErrorObject(instanceMethodError);     }
             return get2DArray(jsScope as { data: number[], columns: number });
         }),
         []
     ],
     ["List", new BuiltinFunctionObject<Hash & { Elements: IMatrixState }>("List", [], function(scope, jsScope) {
-            if (!jsScope) {
-                return new ErrorObject(instanceMethodError);
-            }
+            if (!jsScope) {     return new ErrorObject(instanceMethodError);    }
             return jsScope.data;
         }),
         []
