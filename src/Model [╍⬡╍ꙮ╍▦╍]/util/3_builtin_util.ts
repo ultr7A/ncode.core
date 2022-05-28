@@ -2,7 +2,7 @@
 import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
 import { EObject, FunctionObject } from "../object/0_1_object-structure";
 import { ClassMethodObject, ClassPropertyObject } from "../object/0_2_object-elements";
-import { BuiltinFunctionObject, ClassifiedObject, ConceptObject, ErrorObject, Hash, Integer, StreamObject } from "../object/1_0_object";
+import { _BuiltinFunctionObject, ClassifiedObject, ConceptObject, ErrorObject, Hash, Integer, StreamObject } from "../object/1_0_1_object";
 import { newError } from "./3_0_object-util";
 
 
@@ -49,7 +49,7 @@ function numericArgumentsError(methodName, theArgs, n) {
     return false;
 }
 
-export function makeBuiltinHashmap(methods:  [string, BuiltinFunctionObject | EObject][]): Hash {
+export function makeBuiltinHashmap(methods:  [string, _BuiltinFunctionObject | EObject][]): Hash {
     var elements = {};
     for (var mIdx in methods) {
         var m = methods[mIdx];
@@ -61,7 +61,7 @@ export function makeBuiltinHashmap(methods:  [string, BuiltinFunctionObject | EO
 export function makeBuiltinClass(
     className:   string, 
     properties: [string, EObject, number[]][], 
-    methods:    [string, BuiltinFunctionObject | FunctionObject, number[]][],
+    methods:    [string, _BuiltinFunctionObject | FunctionObject, number[]][],
     concept?: ConceptObject,
 ): ClassifiedObject {
     const constructor = methods.find(method => method[0] === className)?.[1], 
