@@ -5,7 +5,7 @@ import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-ty
 
 import { _BuiltinFunctionObject, ErrorObject, ArrayObject, Integer, Hash } from "../../object/1_0_1_object";
 import { instanceMethodError  } from "../../util/3_0_object-util";
-import { makeBuiltinClass }     from "../../util/3_builtin_util";
+import { makeBuiltinClass, _makeBuiltinClass }     from "../../util/3_builtin_util";
 import { rotateX, rotateY, rotateZ, translate } from "../3d/transform-3d";
 
 
@@ -71,7 +71,7 @@ function MatrixState(data: number[], columns: number) {
     this.columns = columns;
 }
 
-export const Matrix = makeBuiltinClass("Matrix", 
+export const Matrix = _makeBuiltinClass("Matrix", 
     [
         ["data", new ArrayObject([]), []],
         ["columns", new Integer(4), []]

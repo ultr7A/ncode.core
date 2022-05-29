@@ -58,7 +58,7 @@ export function makeBuiltinHashmap(methods:  [string, _BuiltinFunctionObject | E
     return new Hash(elements);
 }
 
-export function makeBuiltinClass(
+export function _makeBuiltinClass(
     className:   string, 
     properties: [string, EObject, number[]][], 
     methods:    [string, _BuiltinFunctionObject | FunctionObject, number[]][],
@@ -81,6 +81,34 @@ export function makeBuiltinClass(
 
         methodsMap[method[0]] = new ClassMethodObject(method[0], method[1], method[2]);
     }
+
+    return new ClassifiedObject(constructor, className, concept, builtins, methodsMap, propertiesMap);
+}
+
+export function makeBuiltinClass(
+    className:     string, 
+    classFilePath: string,
+    concept?: ConceptObject
+): ClassifiedObject {
+    const constructor = null, // = methods.find(method => method[0] === className)?.[1], 
+          builtins    = null,
+    
+        methodsMap: {[key: string]: ClassMethodObject } = {},
+        propertiesMap: {[key: string]: ClassPropertyObject } = {};
+
+    // let builtins;
+
+    // for (const idx in properties) {
+    //     var property = properties[idx];
+
+    //     propertiesMap[property[0]] = new ClassPropertyObject(property[0], property[1], property[2]);
+    // }
+
+    // for (const idx in methods) {
+    //     var method = methods[idx];
+
+    //     methodsMap[method[0]] = new ClassMethodObject(method[0], method[1], method[2]);
+    // }
 
     return new ClassifiedObject(constructor, className, concept, builtins, methodsMap, propertiesMap);
 }

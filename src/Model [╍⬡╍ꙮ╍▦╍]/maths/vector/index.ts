@@ -2,7 +2,7 @@ import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-ty
 
 import { _BuiltinFunctionObject, ErrorObject, ArrayObject, Hash } from "../../object/1_0_1_object";
 import { instanceMethodError  } from "../../util/3_0_object-util";
-import { makeBuiltinClass } from "../../util/3_builtin_util";
+import { makeBuiltinClass, _makeBuiltinClass } from "../../util/3_builtin_util";
 
 export interface IVectorState { data: number[] }
 
@@ -55,7 +55,7 @@ function crossProduct(vector: [number, number, number], other: [number, number, 
     ];
 }
 
-export const Vector = makeBuiltinClass("Vector", 
+export const Vector = _makeBuiltinClass("Vector", 
     [
         ["data", new ArrayObject([]), []]
     ],
