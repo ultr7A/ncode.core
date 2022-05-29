@@ -138,6 +138,7 @@ export class PureFunction implements DynamicFunction {
     }
 }
 
+//  ** DEPRECATED ** 
 export class _BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implements FunctionObject {
     public builtin = true;
     
