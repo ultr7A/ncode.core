@@ -1,18 +1,22 @@
 {
     "compilerOptions": {
-      "target": "ES5",
-      "module": "CommonJS",
-      "moduleResolution": "Node",
+      "baseUrl": ".",
+      "rootDir": "src",
+      "outDir":  "dist",
+
+      "target": "esnext",
+      "module": "esnext",
+      
       "noResolve": false,
       "noImplicitAny": false,
       "declaration": true,
       "sourceMap": true,
+      "experimentalDecorators": true,
       "preserveConstEnums":true,
+      
       "types": [
         "node",
         "jest"
       ],
-      "rootDir": "src",
-      "outDir":  "lib"
     }
   }
