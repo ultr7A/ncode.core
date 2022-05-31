@@ -11,6 +11,7 @@ function VectorState(data: number[]) {
     this.data = data;
 }
 
+
 export const multiplyScalar = function(scope, jsScope, scalar) {
     var matrix = jsScope.data, elements = [];
     for (var i = 0, elems = matrix.length; i < elems; i++) {
