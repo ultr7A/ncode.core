@@ -6,7 +6,8 @@
 
       "target": "esnext",
       "module": "esnext",
-      
+      "lib": ["esnext", "dom"],
+
       "noResolve": false,
       "noImplicitAny": false,
       "declaration": true,
@@ -14,9 +15,10 @@
       "experimentalDecorators": true,
       "preserveConstEnums":true,
       
+      "moduleResolution": "Node",
+
       "types": [
-        "node",
-        "jest"
+        "node"
       ],
     }
   }

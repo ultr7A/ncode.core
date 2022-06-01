@@ -1,5 +1,5 @@
 
-import { builtin_MultiplyScalar } from "../vector";
+import { builtin_MultiplyScalar } from "src/Model [╍⬡╍ꙮ╍▦╍]/maths/vector";
 
 import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
 

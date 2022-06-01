@@ -1,0 +1,36 @@
+#!/bin/bash         
+#   ▅▅▅▅▅▅▅▅▅▅▅
+
+	IDEA="$1";
+	if [ -z "$1" ]
+	then
+		IDEA="${PWD##*/}"
+	fi
+	
+#   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+
+	mkdir "$IDEA/doc";
+	
+	touch                                "$IDEA/doc/README.md";
+	echo -e "# $IDEA \n"              >> "$IDEA/doc/README.md";
+	echo    "▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅" >> "$IDEA/doc/README.md";
+	echo -e "## Journal:\n\n"         >> "$IDEA/doc/README.md";
+	echo    "\`\`\`csv\n\`\`\`"       >> "$IDEA/doc/README.md"; 
+
+	mkdir "$IDEA/doc/img";
+#   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+
+	mkdir "$IDEA/sql";
+	mkdir "$IDEA/sql/concept"
+	mkdir "$IDEA/sql/object"
+	
+	touch 		                    "$IDEA/sql/concept/__$IDEA.sql";
+#	echo -e "CREATE TABLE $IDEA" >> "$IDEA/sql/concept/__$IDEA.sql";
+
+	touch 						    "$IDEA/sql/object/journal.sql";
+	# cp "templates/CREATE.sql" "templates/CREATE_$IDEA.sql";
+	# sed -e "s|IDEA|$IDEA|"    "templates/CREATE_$IDEA.sql";
+	# mv                        "templates/CREATE_$IDEA.sql"; "" 
+#   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
