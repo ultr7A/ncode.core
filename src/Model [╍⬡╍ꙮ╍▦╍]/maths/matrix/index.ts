@@ -1,5 +1,4 @@
 
-import { builtin_MultiplyScalar } from "src/Model [╍⬡╍ꙮ╍▦╍]/maths/vector.js";
 
 import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 
@@ -7,6 +6,7 @@ import { _BuiltinFunctionObject, ErrorObject, ArrayObject, Integer, Hash } from 
 import { instanceMethodError  } from "../../util/3_0_object-util.js";
 import { makeBuiltinClass, _makeBuiltinClass }     from "../../util/3_builtin_util.js";
 import { rotateX, rotateY, rotateZ, translate } from "../3d/transform-3d.js";
+import { builtin_MultiplyScalar } from "../vector/index.js";
 
 
 function initMatrix(cols: number, rows: number): number[] {
