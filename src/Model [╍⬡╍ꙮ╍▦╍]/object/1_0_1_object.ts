@@ -10,7 +10,6 @@ import { assertBuiltinArgs } from "../util/3_builtin_util.js";
 import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure.js";
 import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements.js";
 import { AbstractGraphObject } from "./0_3_abstract-graph-object.js";
-import { NULL } from "./1_1_object.singleton.js";
 import { Environment } from "./1_4_0_environment.js";
 
 
@@ -373,3 +372,10 @@ export class ErrorObject implements EObject {
     public Type() { return ObjectType.ERROR };
     public Inspect() { return "💀  RUNTIME ERROR: " + this.Message; }
 }
+
+
+
+export const strBuiltin = new StringObject("builtin");
+export const TRUE = new BooleanObject(true);
+export const FALSE = new BooleanObject(false);
+export const NULL = new Null();

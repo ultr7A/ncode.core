@@ -9,7 +9,7 @@ import {
 } 
                                 from "../object/1_0_1_object.js";
 
-import { TRUE, FALSE, NULL }    from "../object/1_1_object.singleton.js";
+import { TRUE, FALSE, NULL }    from "../object/1_0_1_object.js";
 import { Environment }  from "../object/1_4_0_environment.js";
 import { sprintf }      from "./1_ubiquitous-util.js";
 
