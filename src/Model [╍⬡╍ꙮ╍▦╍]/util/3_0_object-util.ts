@@ -7,7 +7,7 @@ import {
     ArrayObject, BooleanObject, ClassifiedObject, ErrorObject,
     Float, Hash, Integer, LambdaFunction, StringObject 
 } 
-                                from "../object/1_0_1_object";
+                                from "../object/1_0_1_object.js";
 
 import { TRUE, FALSE, NULL }    from "../object/1_1_object.singleton.js";
 import { Environment }  from "../object/1_4_0_environment.js";
