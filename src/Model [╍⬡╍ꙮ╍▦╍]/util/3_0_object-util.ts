@@ -1,17 +1,17 @@
 
-import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
-import { Optimizer }  from "../../Domain [╍🌐╍🧭╍]/system/optimizer";
-import { EObject, InMemoryScalar, DynamicFunction } from "../object/0_1_object-structure";
-import { ClassPropertyObject }                      from "../object/0_2_object-elements";
+import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { Optimizer }  from "../../Domain [╍🌐╍🧭╍]/system/optimizer.js";
+import { EObject, InMemoryScalar, DynamicFunction } from "../object/0_1_object-structure.js";
+import { ClassPropertyObject }                      from "../object/0_2_object-elements.js";
 import { 
     ArrayObject, BooleanObject, ClassifiedObject, ErrorObject,
     Float, Hash, Integer, LambdaFunction, StringObject 
 } 
                                 from "../object/1_0_1_object";
 
-import { TRUE, FALSE, NULL }    from "../object/1_1_object.singleton";
-import { Environment }  from "../object/1_4_0_environment";
-import { sprintf }      from "./1_ubiquitous-util";
+import { TRUE, FALSE, NULL }    from "../object/1_1_object.singleton.js";
+import { Environment }  from "../object/1_4_0_environment.js";
+import { sprintf }      from "./1_ubiquitous-util.js";
 
 
 

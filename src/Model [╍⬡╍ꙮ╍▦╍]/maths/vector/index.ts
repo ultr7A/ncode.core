@@ -1,8 +1,8 @@
-import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
+import { ObjectType } from "../../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 
-import { _BuiltinFunctionObject, ErrorObject, ArrayObject, Hash } from "../../object/1_0_1_object";
-import { instanceMethodError  } from "../../util/3_0_object-util";
-import { makeBuiltinClass, _makeBuiltinClass } from "../../util/3_builtin_util";
+import { _BuiltinFunctionObject, ErrorObject, ArrayObject, Hash } from "../../object/1_0_1_object.js";
+import { instanceMethodError  } from "../../util/3_0_object-util.js";
+import { makeBuiltinClass, _makeBuiltinClass } from "../../util/3_builtin_util.js";
 
 export interface IVectorState { data: number[] }
 

@@ -1,4 +1,4 @@
-import { EObject, FunctionObject } from "./0_1_object-structure";
+import { EObject, FunctionObject } from "./0_1_object-structure.js";
 
 export class Environment {
     private store;

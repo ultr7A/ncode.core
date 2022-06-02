@@ -1,17 +1,17 @@
-import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
-import { IBlockStatement, IIdentifier } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
-import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum";
-import { StreamToken }                  from "../../Domain [╍🌐╍🧭╍]/syntax/stream.tokens.enum";
-import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/system/optimizer";
+import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { IBlockStatement, IIdentifier } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum.js";
+import { StreamToken }                  from "../../Domain [╍🌐╍🧭╍]/syntax/stream.tokens.enum.js";
+import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/system/optimizer.js";
 
-import { GraphOperator } from "../syntax/1_1_0_expression-elements";
-import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util";
-import { assertBuiltinArgs } from "../util/3_builtin_util";
-import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure";
-import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements";
-import { AbstractGraphObject } from "./0_3_abstract-graph-object";
-import { NULL } from "./1_1_object.singleton";
-import { Environment } from "./1_4_0_environment";
+import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
+import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util.js";
+import { assertBuiltinArgs } from "../util/3_builtin_util.js";
+import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure.js";
+import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements.js";
+import { AbstractGraphObject } from "./0_3_abstract-graph-object.js";
+import { NULL } from "./1_1_object.singleton.js";
+import { Environment } from "./1_4_0_environment.js";
 
 
 

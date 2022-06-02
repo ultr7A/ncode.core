@@ -1,4 +1,4 @@
-import { Identity_Matrix3, Matrix3 } from "../matrix/matrix-3";
+import { Identity_Matrix3, Matrix3 } from "../matrix/matrix-3.js";
 
 
 

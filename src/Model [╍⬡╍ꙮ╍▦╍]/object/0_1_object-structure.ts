@@ -1,6 +1,6 @@
 
-import { IBlockStatement, IIdentifier, Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
-import { Environment } from "./1_4_0_environment";
+import { IBlockStatement, IIdentifier, Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { Environment } from "./1_4_0_environment.js";
 
 
 export type      InspectionType = string | number | boolean | null;

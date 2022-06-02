@@ -1,4 +1,4 @@
-import { Node, Statement } from "../syntax/0_1_0_structure-concept";
+import { Node, Statement } from "../syntax/0_1_0_structure-concept.js";
 
 export interface UnParser {
 

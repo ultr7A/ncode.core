@@ -1,6 +1,6 @@
-import { AbstractOperator, ConceptExpression, Expression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
-import { NodeName } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_2_2_structure-implementation.enum";
-import { UnParser } from "../../Domain [╍🌐╍🧭╍]/system/un-parser";
+import { AbstractOperator, ConceptExpression, Expression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { NodeName } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_2_2_structure-implementation.enum.js";
+import { UnParser } from "../../Domain [╍🌐╍🧭╍]/system/un-parser.js";
 
 
 

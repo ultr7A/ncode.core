@@ -1,6 +1,6 @@
-import { Operator }         from "../../Domain [╍🌐╍🧭╍]/object/0_operation-types_🔍/1_primitive-operators";
-import { ConceptOperator }  from "../../Model [╍⬡╍ꙮ╍▦╍]/syntax/1_1_0_expression-elements";
-import { UnParser }         from "../system/un-parser";
+import { Operator }         from "../../Domain [╍🌐╍🧭╍]/object/0_operation-types_🔍/1_primitive-operators.js";
+import { ConceptOperator }  from "../../Model [╍⬡╍ꙮ╍▦╍]/syntax/1_1_0_expression-elements.js";
+import { UnParser }         from "../system/un-parser.js";
 
 /** 🏆 
  * TODO: Change Primitive into [boxed type, extending Node]
