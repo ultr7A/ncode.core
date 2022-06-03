@@ -12,9 +12,9 @@
  *       tux.setStomachContents("") 
  */
 
- export function WithSetters(methods: [string, Function][]) {
+ export function WithSetters<C extends Function = Function>(methods: [string, Function][]) {
 
-    return function (clazz: Function, { kind, name }) {
+    return function (clazz: C, { kind, name }) {
         
         if (kind === "class") {
 
