@@ -14,7 +14,7 @@
 
  export function WithMethods(methods: [string, Function][]) {
 
-    return function (clazz, { kind, name }) {
+    return function (clazz: Function, { kind, name }) {
         
         if (kind === "class") {
 
