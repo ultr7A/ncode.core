@@ -12,7 +12,7 @@
  *       tux.setStomachContents("") 
  */
 
- export function WithSetters<C extends Function = Function>(methods: [string, Function][]) {
+ export function WithSetters<C extends { prototype: unknown }>(methods: [string, Function][]) {
 
     return function (clazz: C, { kind, name }) {
 
