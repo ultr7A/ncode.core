@@ -12,20 +12,17 @@
  *       tux.flySomehow();
  */
 
- export function WithMethods<C extends Function = Function>(methods: [string, Function][]) {
+ export function WithMethods <C extends { new (...args: any[]): {} }> (methods: [string, Function][]) {
 
-    return function (clazz: C, { kind, name }) {
+    return function (clazz: C) {
         
-        if (kind === "class") {
-
-            for (const idx in methods) {
-                clazz.prototype[methods[idx][0]] = methods[idx][1];
-            }
-
-            return clazz;
+        for (const idx in methods) 
+        {
+            clazz.prototype[methods[idx][0]] = methods[idx][1];
         }
+
+        return clazz;
     }
 
 }
-
 

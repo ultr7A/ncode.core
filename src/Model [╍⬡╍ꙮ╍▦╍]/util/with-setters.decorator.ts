@@ -12,17 +12,4 @@
  *       tux.setStomachContents("") 
  */
 
- export function WithSetters<C extends { prototype: unknown }>(methods: [string, Function][]) {
-
-    return function (clazz: C, { kind, name }) {
-
-        for (const idx in methods) {
-                clazz.prototype["set"+methods[idx][0]] = methods[idx][1];
-        }
-
-        return clazz;
-    }
-
-}
-
-
+// TODO: re-implement
