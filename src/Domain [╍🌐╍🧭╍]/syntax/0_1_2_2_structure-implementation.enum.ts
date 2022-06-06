@@ -58,7 +58,11 @@ export enum NodeName {
     ExecStatement = "ExecStatement",
 
 
+
     // Literal:
+    //
+    //      Literal metaphysical:
+    Null    = "Null",
     //
     //      Literal structures:
     //              Primitives:
