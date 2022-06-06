@@ -1,4 +1,4 @@
-import { NodeName } from "src/Domain [╍🌐╍🧭╍]/syntax/0_1_2_2_structure-implementation.enum.js"
+import { NodeName } from "../syntax/0_1_2_2_structure-implementation.enum.js"
 
 export enum DataType {
     BOOLEAN = "boolean",
