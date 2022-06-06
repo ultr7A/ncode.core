@@ -149,7 +149,13 @@ export class _BuiltinFunctionObject<ObjectContextType extends Hash = Hash> imple
                  public ecsOnly = false // for builtin classes like Math
     ) { }
 
-    public callFromECSRuntime(scope: ClassifiedObject, optimizer: Optimizer, params: EObject[]): EObject {
+    private static optimizer: Optimizer;
+
+    public static setRuntimeOptimizer(optimizer: Optimizer): void {
+        this.optimizer = optimizer;
+    }
+
+    public callFromECSRuntime(scope: ClassifiedObject, params: EObject[]): EObject {
         let err = assertBuiltinArgs(params, this.signature.length, null, this.name, this.signature);
         if (err) {
             return err;
@@ -161,7 +167,7 @@ export class _BuiltinFunctionObject<ObjectContextType extends Hash = Hash> imple
                 // JS Builtins (maybe it could be combined with `context` )
                 (scope && scope.builtins) ? scope.builtins : null
             ]
-            .concat(listOfObjectsToNativeList(params, optimizer))
+            .concat(listOfObjectsToNativeList(params, _BuiltinFunctionObject.optimizer))
         );
 
         if (result && typeof result.Type === "function") {
