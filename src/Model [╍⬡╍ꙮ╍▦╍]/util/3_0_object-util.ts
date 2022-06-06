@@ -249,6 +249,6 @@ export function arrayToNativeList(arr: ArrayObject, opt?: Optimizer, env?: Envir
 export function nativePairValue(hash: Hash, key: string): string | number | boolean { return hash.Elements[key].Inspect(); };
 
 
-export function newError(format: string, ...params: string[]) {
+export function newError(format: string, ...params: (number | string)[]) {
     return new ErrorObject(sprintf.apply(void 0, [format, ...params, '\u0007']));
 }

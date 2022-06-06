@@ -29,7 +29,7 @@ export function assertBuiltinArgs(args: EObject[], min: number, max?: number, na
                 fail_1 = want.indexOf(got) === -1;
             }
             if (fail_1) {
-                return newError(posErr + (name ? " to " + name : "") + " wants %s except it got %s", i+"", want+"", got);
+                return newError(posErr + (name ? " to " + name : "") + " wants %s except it got %s", i, want + "", got);
             }
         }
     }
