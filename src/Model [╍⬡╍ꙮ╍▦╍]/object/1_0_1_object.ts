@@ -1,4 +1,4 @@
-import { Evaluator } from "src/Domain [╍🌐╍🧭╍]/system/evaluator.js";
+import { Evaluator }                    from "src/Domain [╍🌐╍🧭╍]/system/evaluator.js";
 import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 import { IBlockStatement, IIdentifier, Node } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
 import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum.js";
