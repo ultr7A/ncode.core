@@ -4,7 +4,7 @@
         "*.wrapt.org": "java",
     },
 
-    "window.zoomLevel": 1,
+    "window.zoomLevel": -1,
     "editor.mouseWheelZoom": true,
     "workbench.colorTheme": "Freshcut (rainglow)",
     "editor.fontSize": 12,

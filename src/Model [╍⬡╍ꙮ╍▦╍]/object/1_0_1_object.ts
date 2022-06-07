@@ -1,5 +1,6 @@
+import { Evaluator } from "src/Domain [╍🌐╍🧭╍]/system/evaluator.js";
 import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
-import { IBlockStatement, IIdentifier } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { IBlockStatement, IIdentifier, Node } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
 import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum.js";
 import { StreamToken }                  from "../../Domain [╍🌐╍🧭╍]/syntax/stream.tokens.enum.js";
 import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/system/optimizer.js";
@@ -57,6 +58,26 @@ export class ReturnValue implements EObject {
     public Inspect() { return this.Value.Inspect(); }
 };
 
+
+export class DynamicFunctionEvaluator {
+
+    private static evaluator: Evaluator<Node, EObject>;
+    public  static setExpressionEvaluator(evaluator: Evaluator<Node, EObject>): void {
+        this.evaluator = evaluator;
+    }    
+
+    public static evaluate(dynamicFunc: DynamicFunction, environment: Environment): ReturnValue {
+        return DynamicFunctionEvaluator
+                             .evaluator
+                             .Eval(
+                                dynamicFunc.Body, 
+                                environment, 
+                                (dynamicFunc as LambdaFunction)?.ObjectContext
+                            ) as ReturnValue;
+    }
+}
+
+
 export class LambdaFunction implements DynamicFunction {
     constructor(
         public Parameters: IIdentifier[],  public Body: IBlockStatement, 
@@ -66,6 +87,10 @@ export class LambdaFunction implements DynamicFunction {
         public ReturnType?: string,        public ParameterTypes?: string[], 
         public stateful = null
     ) { }
+
+    public evaluate(environment: Environment): ReturnValue {
+        return DynamicFunctionEvaluator.evaluate(this, environment);
+    }
 
     public Type() { return ObjectType.FUNCTION }
 
@@ -108,6 +133,10 @@ export class PureFunction implements DynamicFunction {
                 public Env?: Environment,        public Fn?: BuiltinFunction, 
                 public ReturnType?: string,      public ParameterTypes?: string[]) {  }
 
+    public evaluate(environment: Environment): ReturnValue {
+        return DynamicFunctionEvaluator.evaluate(this, environment);
+    }
+
     public Type() { return ObjectType.PURE_FUNCTION }
 
     public Inspect(indentLevel: number = 1) {
@@ -149,11 +178,13 @@ export class _BuiltinFunctionObject<ObjectContextType extends Hash = Hash> imple
                  public ecsOnly = false // for builtin classes like Math
     ) { }
 
-    private static optimizer: Optimizer;
 
+    private static optimizer: Optimizer;
+    
     public static setRuntimeOptimizer(optimizer: Optimizer): void {
         this.optimizer = optimizer;
     }
+
 
     public callFromECSRuntime(scope: ClassifiedObject, params: EObject[]): EObject {
         let err = assertBuiltinArgs(params, this.signature.length, null, this.name, this.signature);
