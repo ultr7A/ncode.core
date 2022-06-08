@@ -1,7 +1,14 @@
 {
-    "window.zoomLevel": 1,
+    // 
+    "files.associations": {
+        "*.wrapt.org": "java",
+    },
+
+    "window.zoomLevel": -1,
     "editor.mouseWheelZoom": true,
-    "workbench.colorTheme": "Default Light+",
-    "editor.fontSize": 15,
-    "editor.fontWeight": "200"
+    "workbench.colorTheme": "Freshcut (rainglow)",
+    "editor.fontSize": 12,
+    "editor.fontWeight": "200",
+    "editor.fontFamily": "'JetBrains Mono'",
+    "workbench.preferredHighContrastLightColorTheme": "Freshcut (rainglow)"
 }

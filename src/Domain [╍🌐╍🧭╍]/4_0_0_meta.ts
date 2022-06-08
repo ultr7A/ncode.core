@@ -1,4 +1,4 @@
-import { IBlockStatement } from "./syntax/0_1_0_structure-concept";
+import { IBlockStatement } from "./syntax/0_1_0_structure-concept.js";
 
 export interface ParseTreeAnalysis {
     hasLoops: boolean;

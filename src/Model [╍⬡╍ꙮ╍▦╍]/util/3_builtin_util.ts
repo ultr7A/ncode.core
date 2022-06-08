@@ -1,9 +1,9 @@
 
-import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
-import { EObject, FunctionObject } from "../object/0_1_object-structure";
-import { ClassMethodObject, ClassPropertyObject } from "../object/0_2_object-elements";
-import { BuiltinFunctionObject, ClassifiedObject, ConceptObject, ErrorObject, Hash, Integer, StreamObject } from "../object/1_0_object";
-import { newError } from "./3_0_object-util";
+import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { EObject, FunctionObject } from "../object/0_1_object-structure.js";
+import { ClassMethodObject, ClassPropertyObject } from "../object/0_2_object-elements.js";
+import { _BuiltinFunctionObject, ClassifiedObject, ConceptObject, ErrorObject, Hash, Integer, StreamObject } from "../object/1_0_1_object.js";
+import { newError } from "./3_0_object-util.js";
 
 
 var argsError = "wrong number of arguments. got=%d, want=%d  ";
@@ -29,7 +29,7 @@ export function assertBuiltinArgs(args: EObject[], min: number, max?: number, na
                 fail_1 = want.indexOf(got) === -1;
             }
             if (fail_1) {
-                return newError(posErr + (name ? " to " + name : "") + " wants %s except it got %s", i+"", want+"", got);
+                return newError(posErr + (name ? " to " + name : "") + " wants %s except it got %s", i, want + "", got);
             }
         }
     }
@@ -49,7 +49,7 @@ function numericArgumentsError(methodName, theArgs, n) {
     return false;
 }
 
-export function makeBuiltinHashmap(methods:  [string, BuiltinFunctionObject | EObject][]): Hash {
+export function makeBuiltinHashmap(methods:  [string, _BuiltinFunctionObject | EObject][]): Hash {
     var elements = {};
     for (var mIdx in methods) {
         var m = methods[mIdx];
@@ -58,10 +58,10 @@ export function makeBuiltinHashmap(methods:  [string, BuiltinFunctionObject | EO
     return new Hash(elements);
 }
 
-export function makeBuiltinClass(
+export function _makeBuiltinClass(
     className:   string, 
     properties: [string, EObject, number[]][], 
-    methods:    [string, BuiltinFunctionObject | FunctionObject, number[]][],
+    methods:    [string, _BuiltinFunctionObject | FunctionObject, number[]][],
     concept?: ConceptObject,
 ): ClassifiedObject {
     const constructor = methods.find(method => method[0] === className)?.[1], 
@@ -81,6 +81,34 @@ export function makeBuiltinClass(
 
         methodsMap[method[0]] = new ClassMethodObject(method[0], method[1], method[2]);
     }
+
+    return new ClassifiedObject(constructor, className, concept, builtins, methodsMap, propertiesMap);
+}
+
+export function makeBuiltinClass(
+    className:     string, 
+    classFilePath: string,
+    concept?: ConceptObject
+): ClassifiedObject {
+    const constructor = null, // = methods.find(method => method[0] === className)?.[1], 
+          builtins    = null,
+    
+        methodsMap: {[key: string]: ClassMethodObject } = {},
+        propertiesMap: {[key: string]: ClassPropertyObject } = {};
+
+    // let builtins;
+
+    // for (const idx in properties) {
+    //     var property = properties[idx];
+
+    //     propertiesMap[property[0]] = new ClassPropertyObject(property[0], property[1], property[2]);
+    // }
+
+    // for (const idx in methods) {
+    //     var method = methods[idx];
+
+    //     methodsMap[method[0]] = new ClassMethodObject(method[0], method[1], method[2]);
+    // }
 
     return new ClassifiedObject(constructor, className, concept, builtins, methodsMap, propertiesMap);
 }

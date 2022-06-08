@@ -1,8 +1,8 @@
-import { ObjectType }        from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
-import { ConceptExpression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
+import { ObjectType }        from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { ConceptExpression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
 
-import { GraphOperator } from "../syntax/1_1_0_expression-elements";
-import { EObject, FunctionObject } from "./0_1_object-structure";
+import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
+import { EObject, FunctionObject } from "./0_1_object-structure.js";
 
 export class ClassMethodObject {
     constructor(

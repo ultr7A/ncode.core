@@ -9,6 +9,7 @@ export enum NodeName {
 
 
     // Expression:
+    //
     //      Structures:
     PrefixExpression = "PrefixExpression",
     InfixExpression = "InfixExpression",
@@ -22,14 +23,20 @@ export enum NodeName {
     StreamExpression = "StreamExpression",
 
     //      Expression elements:
-    //              Abstract operators:
+    //          Abstract operators:
     GraphOperator = "GraphOperator",
     ConceptOperator = "ConceptOperator",
     ControlFlowOperator = "ControlFlowOperator",
     DataFlowOperator = "DataFlowOperator",
 
 
+
     // Statement:
+    //
+    //      Module organization:
+    ImportStatement = "ImportStatement",
+    ExportStatement = "ExportStatement",
+
     //      Data-Structure declarations:
     LetStatement = "LetStatement",
     ClassStatement = "ClassStatement",
@@ -51,7 +58,12 @@ export enum NodeName {
     ExecStatement = "ExecStatement",
 
 
+
     // Literal:
+    //
+    //      Literal metaphysical:
+    Null    = "Null",
+    //
     //      Literal structures:
     //              Primitives:
     Boolean = "Boolean",

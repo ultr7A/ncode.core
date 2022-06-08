@@ -1,6 +1,6 @@
-import { GraphOperator } from "../syntax/1_1_0_expression-elements";
-import { EObject } from "./0_1_object-structure";
-import { GraphNodeObject, GraphEdgeObject } from "./0_2_object-elements";
+import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
+import { EObject } from "./0_1_object-structure.js";
+import { GraphNodeObject, GraphEdgeObject } from "./0_2_object-elements.js";
 
 export class AbstractGraphObject<V extends EObject = EObject, O = GraphOperator> {
     protected idCounter = 0;

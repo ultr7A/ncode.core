@@ -1,17 +1,17 @@
-import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum";
-import { IBlockStatement, IIdentifier } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
-import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum";
-import { StreamToken }                  from "../../Domain [╍🌐╍🧭╍]/syntax/stream.tokens.enum";
-import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/system/optimizer";
+import { Evaluator }                    from "../../Domain [╍🌐╍🧭╍]/system/evaluator.js";
+import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { IBlockStatement, IIdentifier, Node } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum.js";
+import { StreamToken }                  from "../../Domain [╍🌐╍🧭╍]/syntax/stream.tokens.enum.js";
+import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/system/optimizer.js";
 
-import { GraphOperator } from "../syntax/1_1_0_expression-elements";
-import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util";
-import { assertBuiltinArgs } from "../util/3_builtin_util";
-import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure";
-import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements";
-import { AbstractGraphObject } from "./0_3_abstract-graph-object";
-import { NULL } from "./1_1_object.singleton";
-import { Environment } from "./1_4_0_environment";
+import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
+import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util.js";
+import { assertBuiltinArgs } from "../util/3_builtin_util.js";
+import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure.js";
+import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements.js";
+import { AbstractGraphObject } from "./0_3_abstract-graph-object.js";
+import { Environment } from "./1_4_0_environment.js";
 
 
 
@@ -58,15 +58,39 @@ export class ReturnValue implements EObject {
     public Inspect() { return this.Value.Inspect(); }
 };
 
+
+export class DynamicFunctionEvaluator {
+
+    private static evaluator: Evaluator<Node, EObject>;
+    public  static setExpressionEvaluator(evaluator: Evaluator<Node, EObject>): void {
+        this.evaluator = evaluator;
+    }    
+
+    public static evaluate(dynamicFunc: DynamicFunction, environment: Environment): ReturnValue {
+        return DynamicFunctionEvaluator
+                             .evaluator
+                             .Eval(
+                                dynamicFunc.Body, 
+                                environment, 
+                                (dynamicFunc as LambdaFunction)?.ObjectContext
+                            ) as ReturnValue;
+    }
+}
+
+
 export class LambdaFunction implements DynamicFunction {
     constructor(
         public Parameters: IIdentifier[],  public Body: IBlockStatement, 
         public Env: Environment, 
         public Fn?: BuiltinFunction, 
         public ObjectContext?: ClassifiedObject, 
-        public ReturnType?: string,       public ParameterTypes?: string[], 
+        public ReturnType?: string,        public ParameterTypes?: string[], 
         public stateful = null
     ) { }
+
+    public evaluate(environment: Environment): ReturnValue {
+        return DynamicFunctionEvaluator.evaluate(this, environment);
+    }
 
     public Type() { return ObjectType.FUNCTION }
 
@@ -109,6 +133,10 @@ export class PureFunction implements DynamicFunction {
                 public Env?: Environment,        public Fn?: BuiltinFunction, 
                 public ReturnType?: string,      public ParameterTypes?: string[]) {  }
 
+    public evaluate(environment: Environment): ReturnValue {
+        return DynamicFunctionEvaluator.evaluate(this, environment);
+    }
+
     public Type() { return ObjectType.PURE_FUNCTION }
 
     public Inspect(indentLevel: number = 1) {
@@ -138,7 +166,8 @@ export class PureFunction implements DynamicFunction {
     }
 }
 
-export class BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implements FunctionObject {
+//  ** DEPRECATED ** 
+export class _BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implements FunctionObject {
     public builtin = true;
     
     constructor(public name: string, public signature: [] | (ObjectType | ObjectType[])[],
@@ -149,7 +178,15 @@ export class BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implem
                  public ecsOnly = false // for builtin classes like Math
     ) { }
 
-    public callFromECSRuntime(scope: ClassifiedObject, optimizer: Optimizer, params: EObject[]): EObject {
+
+    private static optimizer: Optimizer;
+    
+    public static setRuntimeOptimizer(optimizer: Optimizer): void {
+        this.optimizer = optimizer;
+    }
+
+
+    public callFromECSRuntime(scope: ClassifiedObject, params: EObject[]): EObject {
         let err = assertBuiltinArgs(params, this.signature.length, null, this.name, this.signature);
         if (err) {
             return err;
@@ -161,7 +198,7 @@ export class BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implem
                 // JS Builtins (maybe it could be combined with `context` )
                 (scope && scope.builtins) ? scope.builtins : null
             ]
-            .concat(listOfObjectsToNativeList(params, optimizer))
+            .concat(listOfObjectsToNativeList(params, _BuiltinFunctionObject.optimizer))
         );
 
         if (result && typeof result.Type === "function") {
@@ -172,7 +209,7 @@ export class BuiltinFunctionObject<ObjectContextType extends Hash = Hash> implem
 
     public Type() { return ObjectType.BUILTIN }
 
-    public Inspect(indentLevel: number = 1) {
+    public Inspect(indentLevel: number = 1) {                    // \/\/\/ Deprecated???
         let functionSig = this.Fn.toString().split("\n")[0].split("jsScope, ")[1];
         return 'builtin fn' + (indentLevel
             ? "(" + (functionSig
@@ -238,12 +275,6 @@ export class ArrayObject implements SequenceObject<EObject> {
     }
 }
 
-export class ErrorObject implements EObject {
-    constructor(public Message: string) { }
-
-    public Type() { return ObjectType.ERROR };
-    public Inspect() { return "💀  RUNTIME ERROR: " + this.Message; }
-}
 
 export class Hash implements StructureObject<string, EObject> {
     constructor(
@@ -371,3 +402,17 @@ export class ConceptObject extends AbstractGraphObject<ConceptObject, ConceptOpe
     public Type() { return ObjectType.CONCEPT_OBJECT; }
 }
 
+
+export class ErrorObject implements EObject {
+    constructor(public Message: string) { }
+
+    public Type() { return ObjectType.ERROR };
+    public Inspect() { return "💀  RUNTIME ERROR: " + this.Message; }
+}
+
+
+
+export const strBuiltin = new StringObject("builtin");
+export const TRUE = new BooleanObject(true);
+export const FALSE = new BooleanObject(false);
+export const NULL = new Null();

@@ -1,16 +1,15 @@
 
-import { IBlockStatement, IIdentifier, Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept";
-import { Hash } from "./1_0_object";
-import { Environment } from "./1_4_0_environment";
+import { IBlockStatement, IIdentifier, Primitive } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { Environment } from "./1_4_0_environment.js";
 
 
-export type InspectionType = string | number | boolean | null;
-export type JSIndexType = string | number | symbol;
-
+export type      InspectionType = string | number | boolean | null;
+export type      JSIndexType    = string | number | symbol;
 export interface EObject {
     Type: () => string;
     Inspect: (indentLevel?: number) => InspectionType;
 };
+
 
 export interface Hashable extends EObject {
     HashKey(): string;
@@ -36,14 +35,12 @@ export interface StructureObject<K extends JSIndexType, E extends EObject> exten
  * 
  */
 
-
 export interface FunctionObject extends EObject {
     Parameters?: IIdentifier[];
     Fn?: BuiltinFunction<any>;
     ReturnType?: string;
     ParameterTypes?: string[];
 }
-
 export interface DynamicFunction extends FunctionObject {
     Parameters: IIdentifier[];
     Body: IBlockStatement;
@@ -52,7 +49,6 @@ export interface DynamicFunction extends FunctionObject {
     ParameterTypes?: string[];
     stateful?: string[];
 }
-
 export type BuiltinFunction<ObjectContextType = any> = (
     // context?: WorkerContext, 
     scope?: ObjectContextType,

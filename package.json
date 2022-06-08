@@ -1,18 +1,23 @@
 {
-  "name": "wrapt.co_re",
-  "version": "1.1.6",
-  "description": "Shared domain model for Wrapt.org programming language, runtime-environment, and tooling.",
-  "scripts": {
-    "test": "jest",
-    "build": "tsc",
-    "prepublish": "npm run build"
-  },
-  "author": "Jeremy Evans<openspacehexagon@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/jest": "^27.4.1",
-    "jest": "^27.5.1",
-    "ts-jest": "^27.1.4",
-    "typescript": "^4.5.4"
-  }
+    "name": "wrapt.co_re",
+    "version": "1.1.40",
+    "type": "module",
+    "description": "Shared domain model for Wrapt.org programming language, runtime-environment, and tooling.",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "scripts": {
+        "test": "jest",
+        "build": "tsc",
+        "prepare": "tsc",
+        "prepublish": "npm run build"
+    },
+    "author": "Jeremy Evans<openspacehexagon@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/jest": "^27.4.1",
+        "ts-jest": "^27.1.4",
+        "typescript": "^4.5.4"
+    }
 }

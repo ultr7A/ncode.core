@@ -1,0 +1,9 @@
+/**
+ *  Matrix is a table of values representing
+ *            a transformation within a coordinate system.
+ */
+
+ public class Matrix ( 3D? 4D? size ) {
+
+     
+ }
