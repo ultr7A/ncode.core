@@ -105,13 +105,11 @@ export enum NodeName {
     GraphNode = "GraphNode",
     GraphEdge = "GraphEdge",
 
-    // Deprecated ???
-    // Abstract nodes:
-    AbstractBlock = "AbstractBlock",
-    AbstractStatement = "AbstractStatement",
-
     // Receivers:
-    TransformReceiver = "TransformReceiver",
+    PropertyTransformReceiverExpression = "PropertyTransformReceiverExpression",
+    PropertyTransformReceiverFunction = "PropertyTransformReceiverFunction",
+    MethodTransformReceiverProcedure = "MethodTransformReceiverProcedure",
+    RuntimeTransformReceiverHandler = "RuntimeTransformReceiverHandler",
     ConceptReceiver   = "ConceptReceiver", 
 
     // Transforms:
@@ -123,6 +121,8 @@ export enum NodeName {
     //      Concept elements:
     ConceptProjection          = "ConceptProjection",
     ConceptProjectorSelector   = "ConceptProjectorSelector",
-    ConceptProjectionTransform = "ConceptProjectionTransform" 
-
+    ConceptProjectionTransform = "ConceptProjectionTransform", 
+    //      Abstract statements & expressions:
+    ConceptTransformationExpressionAbstraction = "ConceptTransformationExpressionAbstraction",
+    ConceptTransformationStatementAbstraction  = "ConceptTransformationStatementAbstraction",
 }
