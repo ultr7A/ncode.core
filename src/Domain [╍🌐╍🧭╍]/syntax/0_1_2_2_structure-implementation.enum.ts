@@ -105,6 +105,12 @@ export enum NodeName {
     GraphNode = "GraphNode",
     GraphEdge = "GraphEdge",
 
+    // Abstractions:
+    AbstractStatement = "AbstractStatement",
+    AbstractExpression = "AbstractExpression",
+    // Abstraction Vectors:
+    AbstractBlockStatement = "AbstractBlockStatement",
+
     // Receivers:
     PropertyTransformReceiverExpression = "PropertyTransformReceiverExpression",
     PropertyTransformReceiverFunction = "PropertyTransformReceiverFunction",
