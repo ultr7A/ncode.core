@@ -105,7 +105,24 @@ export enum NodeName {
     GraphNode = "GraphNode",
     GraphEdge = "GraphEdge",
 
+    // Deprecated ???
     // Abstract nodes:
     AbstractBlock = "AbstractBlock",
-    AbstractStatement = "AbstractStatement"
+    AbstractStatement = "AbstractStatement",
+
+    // Receivers:
+    TransformReceiver = "TransformReceiver",
+    ConceptReceiver   = "ConceptReceiver", 
+
+    // Transforms:
+    InstanceTransform   = "InstanceTransform",
+    InspectionTransform = "InspectionTransform",
+
+    // Concepts:
+    ConceptLiteral             = "ConceptLiteral",
+    //      Concept elements:
+    ConceptProjection          = "ConceptProjection",
+    ConceptProjectorSelector   = "ConceptProjectorSelector",
+    ConceptProjectionTransform = "ConceptProjectionTransform" 
+
 }
