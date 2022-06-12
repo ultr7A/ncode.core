@@ -1,7 +1,7 @@
-import { ErrorObject }     from "src/Model [╍⬡╍ꙮ╍▦╍]/object/1_0_1_object.js";
-import { ModuleExport }    from "src/Domain [╍🌐╍🧭╍]/module/module-export.js";
-import { ModuleImport }    from "src/Domain [╍🌐╍🧭╍]/module/module-import.js";
-import { IBlockStatement } from "src/Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { ErrorObject } from "src/Model [╍⬡╍ꙮ╍▦╍]/object/1_0_1_object";
+import { ModuleExport } from "./module/module-export";
+import { ModuleImport } from "./module/module-import";
+import { IBlockStatement } from "./syntax/0_1_0_structure-concept";
 
 export interface ParseTreeAnalysis {
     hasLoops: boolean;
