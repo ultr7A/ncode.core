@@ -1,7 +1,7 @@
-import { CodeData } from "src/Domain [╍🌐╍🧭╍]/source/source-code.js";
-import { IBlockStatement } from "../syntax/0_1_0_structure-concept.js";
-import { ModuleExport } from "./module-export.js";
-import { ModuleTopology_Name } from "./module-structure.enum.js";
+import { CodeData }        from "src/Domain [╍🌐╍🧭╍]/source/source-code.js";
+import { IBlockStatement } from "src/Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
+import { ModuleExport }    from "src/Domain [╍🌐╍🧭╍]/module/module-export.js";
+import { ModuleTopology_Name } from "src/Domain [╍🌐╍🧭╍]/module/module-structure.enum.js";
 
 
 
