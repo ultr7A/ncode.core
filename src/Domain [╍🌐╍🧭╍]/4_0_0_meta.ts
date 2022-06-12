@@ -1,4 +1,4 @@
-import { ErrorObject } from "src/Model [╍⬡╍ꙮ╍▦╍]/object/1_0_1_object.js";
+import { ErrorObject } from "../Model [╍⬡╍ꙮ╍▦╍]/object/1_0_1_object.js";
 import { ModuleExport } from "./module/module-export.js";
 import { ModuleImport } from "./module/module-import.js";
 import { IBlockStatement } from "./syntax/0_1_0_structure-concept.js";
