@@ -105,7 +105,30 @@ export enum NodeName {
     GraphNode = "GraphNode",
     GraphEdge = "GraphEdge",
 
-    // Abstract nodes:
-    AbstractBlock = "AbstractBlock",
-    AbstractStatement = "AbstractStatement"
+    // Abstractions:
+    AbstractStatement = "AbstractStatement",
+    AbstractExpression = "AbstractExpression",
+    // Abstraction Vectors:
+    AbstractBlockStatement = "AbstractBlockStatement",
+
+    // Receivers:
+    PropertyTransformReceiverExpression = "PropertyTransformReceiverExpression",
+    PropertyTransformReceiverFunction = "PropertyTransformReceiverFunction",
+    MethodTransformReceiverProcedure = "MethodTransformReceiverProcedure",
+    RuntimeTransformReceiverHandler = "RuntimeTransformReceiverHandler",
+    ConceptReceiver   = "ConceptReceiver", 
+
+    // Transforms:
+    InstanceTransform   = "InstanceTransform",
+    InspectionTransform = "InspectionTransform",
+
+    // Concepts:
+    ConceptLiteral             = "ConceptLiteral",
+    //      Concept elements:
+    ConceptProjection          = "ConceptProjection",
+    ConceptProjectorSelector   = "ConceptProjectorSelector",
+    ConceptProjectionTransform = "ConceptProjectionTransform", 
+    //      Abstract statements & expressions:
+    ConceptTransformationExpressionAbstraction = "ConceptTransformationExpressionAbstraction",
+    ConceptTransformationStatementAbstraction  = "ConceptTransformationStatementAbstraction",
 }

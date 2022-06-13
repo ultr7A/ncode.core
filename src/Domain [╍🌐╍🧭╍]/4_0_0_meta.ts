@@ -1,3 +1,6 @@
+import { ErrorObject } from "../Model [╍⬡╍ꙮ╍▦╍]/object/1_0_1_object.js";
+import { ModuleExport } from "./module/module-export.js";
+import { ModuleImport } from "./module/module-import.js";
 import { IBlockStatement } from "./syntax/0_1_0_structure-concept.js";
 
 export interface ParseTreeAnalysis {
@@ -12,6 +15,9 @@ export interface ParseTreeAnalysis {
 }
 
 export interface ParseResult {
-    tree: IBlockStatement;
+    tree:     IBlockStatement;
     analysis: ParseTreeAnalysis;
+    errors:   ErrorObject[];
+    imports: ModuleImport[];
+    exports: ModuleExport[];
 }
