@@ -1,5 +1,5 @@
 import { CodeData }        from "../source/source-code.js";
-import { IBlockStatement } from "../syntax/0_1_0_structure-concept.js";
+import { IBlockStatement, IIdentifier } from "../syntax/0_1_0_structure-concept.js";
 import { ModuleExport }    from "./module-export.js";
 import { ModuleTopology_Name } from "./module-structure.enum.js";
 
@@ -7,9 +7,11 @@ import { ModuleTopology_Name } from "./module-structure.enum.js";
 
  
 export class Module<ModuleTopology extends CodeData> {
-    Name: string;
+    Name: IIdentifier;
+
+    AST: IBlockStatement;
     Code: ModuleTopology;
-    AST: IBlockStatement
     Topology: ModuleTopology_Name;
     Exports: ModuleExport[]
 }
+
