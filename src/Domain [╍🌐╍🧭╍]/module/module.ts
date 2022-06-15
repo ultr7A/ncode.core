@@ -8,8 +8,8 @@ import { ModuleTopology_Name } from "./module-structure.enum.js";
  
 export class Module<ModuleTopology extends CodeData> {
     Name: IIdentifier;
-
-    AST: Statement | IBlockStatement;
+    AST: Statement;
+    AST_RAW: Node;
     Code: ModuleTopology;
     Topology: ModuleTopology_Name;
     Exports: ModuleExport[];
