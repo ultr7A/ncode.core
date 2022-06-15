@@ -9,7 +9,7 @@ import { ModuleTopology_Name } from "./module-structure.enum.js";
 export class Module<ModuleTopology extends CodeData> {
     Name: IIdentifier;
 
-    AST: Statement;
+    AST: Statement | IBlockStatement;
     Code: ModuleTopology;
     Topology: ModuleTopology_Name;
     Exports: ModuleExport[];
