@@ -1,5 +1,5 @@
 import { CodeData }        from "../source/source-code.js";
-import { IBlockStatement, IIdentifier, Statement } from "../syntax/0_1_0_structure-concept.js";
+import { Node, IIdentifier, Statement } from "../syntax/0_1_0_structure-concept.js";
 import { ModuleExport }    from "./module-export.js";
 import { ModuleImport } from "./module-import.js";
 import { ModuleTopology_Name } from "./module-structure.enum.js";
