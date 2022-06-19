@@ -1,6 +1,6 @@
 {
     "name": "wrapt.co_re",
-    "version": "1.1.61",
+    "version": "1.1.62",
     "type": "module",
     "description": "Shared domain model for Wrapt.org programming language, runtime-environment, and tooling.",
     "files": [

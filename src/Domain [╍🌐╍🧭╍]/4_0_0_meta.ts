@@ -18,6 +18,5 @@ export interface ParseResult {
     tree:     IBlockStatement;
     analysis: ParseTreeAnalysis;
     errors:   ErrorObject[];
-    imports: ModuleImport[];
-    exports: ModuleExport[];
+    modules:  {[modulePath: string]: any };
 }
