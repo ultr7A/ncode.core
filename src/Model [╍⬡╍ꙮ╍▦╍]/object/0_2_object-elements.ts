@@ -2,7 +2,7 @@ import { ObjectType }        from "../../Domain [╍🌐╍🧭╍]/object/objec
 import { ConceptExpression } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
 
 import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
-import { EObject, FunctionObject } from "./0_1_object-structure.js";
+import { EObject, FunctionObject } from "./0_0_object-structure.js";
 
 export class ClassMethodObject {
     constructor(

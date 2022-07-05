@@ -1,7 +1,7 @@
 
 import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 import { Optimizer }  from "../../Domain [╍🌐╍🧭╍]/system/optimizer.js";
-import { EObject, InMemoryScalar, DynamicFunction } from "../object/0_1_object-structure.js";
+import { EObject, InMemoryScalar, DynamicFunction } from "../object/0_0_object-structure.js";
 import { ClassPropertyObject }                      from "../object/0_2_object-elements.js";
 import { 
     ArrayObject, BooleanObject, ClassifiedObject, ErrorObject,
