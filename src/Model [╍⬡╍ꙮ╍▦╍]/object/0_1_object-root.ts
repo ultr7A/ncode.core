@@ -1,4 +1,4 @@
-import { ObjectType } from "src/Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 import { EObject, InspectionType } from "./0_0_object-structure.js";
 
 /**

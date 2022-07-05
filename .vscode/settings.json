@@ -5,7 +5,7 @@
         "*.wr":        "java"
     },
 
-    "window.zoomLevel": 4,
+    "window.zoomLevel": 3,
     "editor.mouseWheelZoom": true,
     "workbench.colorTheme": "Default Light+",
     "editor.fontSize": 12,
