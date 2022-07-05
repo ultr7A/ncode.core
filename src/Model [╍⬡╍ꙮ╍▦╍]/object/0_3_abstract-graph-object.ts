@@ -1,4 +1,4 @@
-import { ObjectType } from "src/Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
 import { EObject } from "./0_0_object-structure.js";
 import { AbstractEObject } from "./0_1_object-root.js";
