@@ -5,11 +5,13 @@
         "*.wr":        "java"
     },
 
-    "window.zoomLevel": 3,
+    "window.zoomLevel": 1,
     "editor.mouseWheelZoom": true,
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Sourlick Light (rainglow)",
     "editor.fontSize": 12,
     "editor.fontWeight": "200",
     "editor.fontFamily": "'JetBrains Mono'",
-    "workbench.preferredHighContrastLightColorTheme": "Freshcut (rainglow)"
+    "workbench.preferredHighContrastLightColorTheme": "Freshcut (rainglow)",
+    "editor.minimap.scale": 3,
+    "editor.minimap.size": "fit"
 }

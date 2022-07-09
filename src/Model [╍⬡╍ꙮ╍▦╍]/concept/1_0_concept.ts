@@ -12,9 +12,6 @@ import { _CONCEPT } from "./0_1_concept.type.js";
     abstract transform(input?: Concept): Concept<Chain>;
     abstract definition:                 Chain;
     
-    //public   qualities:  { [name: string]: Concept } = {};
-    //public   principles: { [name: string]: Concept } = {};
-
 
     protected project(): Concept {
         let output: Concept = this.transform();
@@ -28,5 +25,8 @@ import { _CONCEPT } from "./0_1_concept.type.js";
         return output;
     }
 
+    public apply<T extends Concept<_CONCEPT[]> = Concept<_CONCEPT[]>>(): T {
+        return this.project() as T;
+    }
 
 }
