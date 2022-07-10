@@ -7,19 +7,38 @@ import { _CONCEPT } from "./0_1_concept.type.js";
  * 
  * 
  */
- export abstract class Concept<Chain extends _CONCEPT[] = _CONCEPT[]> {
-
-    abstract transform(input?: Concept): Concept<Chain>;
-    abstract definition:                 Chain;
-    
+ export 
+ abstract  class Concept<
+                    Chain     extends _CONCEPT[] =       _CONCEPT[],
+                    Qualities                    = { [name: string]: any }
+                        > 
+{
+   
+    public   name:       string;
+    abstract foundation: Chain;
+    abstract principles: {
+                            [principleName: string]: (c: Concept)=> any
+                         }
+    abstract qualities:  Qualities 
 
     protected project(): Concept {
         let output: Concept = this.transform();
         
-        for (const idx in this.definition) {
-            const concept = this.definition[idx];
+        for (const idx in this.foundation) {
+            const concept = this.foundation[idx];
             
             output = concept.transform(output)
+        }
+
+        return output;
+    }
+
+    protected transform(output: Concept = this): Concept {
+        
+        for (const principleName in this.principles) {
+            const principle = this.principles[principleName];
+            
+            this.qualities[principleName] = principle(this);
         }
 
         return output;

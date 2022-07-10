@@ -7,7 +7,7 @@
 
     "window.zoomLevel": 1,
     "editor.mouseWheelZoom": true,
-    "workbench.colorTheme": "Sourlick Light (rainglow)",
+    "workbench.colorTheme": "Sourlick (rainglow)",
     "editor.fontSize": 12,
     "editor.fontWeight": "200",
     "editor.fontFamily": "'JetBrains Mono'",
