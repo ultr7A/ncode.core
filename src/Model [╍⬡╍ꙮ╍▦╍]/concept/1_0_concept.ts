@@ -14,7 +14,7 @@ import { _CONCEPT } from "./0_1_concept.type.js";
                         > 
 {
    
-    public   name:       string;
+    abstract name:       string;
     abstract foundation: Chain;
     abstract principles: {
                             [principleName: string]: (c: Concept)=> any
