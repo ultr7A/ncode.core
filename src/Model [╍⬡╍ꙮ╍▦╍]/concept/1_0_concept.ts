@@ -1,4 +1,6 @@
-import { _CONCEPT } from "./0_1_concept.type.js";
+import { _CONCEPT }    from "./0_1_concept.type.js";
+import { _PRINCIPLES } from "./0_2_concept-principles.type.js";
+
 
 /**
  * 
@@ -9,17 +11,16 @@ import { _CONCEPT } from "./0_1_concept.type.js";
  */
  export 
  abstract  class Concept<
-                    Chain     extends _CONCEPT[] =       _CONCEPT[],
-                    Qualities                    = { [name: string]: any }
+                    Chain      extends _CONCEPT[]  = _CONCEPT[],
+                    Qualities                      = {[name: string]: any},
+                    Principles extends _PRINCIPLES = _PRINCIPLES
                         > 
 {
    
     abstract name:       string;
     abstract foundation: Chain;
-    abstract principles: {
-                            [principleName: string]: (c: Concept)=> any
-                         }
-    abstract qualities:  Qualities 
+    abstract principles: Principles;
+    abstract qualities:  Qualities;
 
     protected project(): Concept {
         let output: Concept = this.transform();
@@ -38,7 +39,7 @@ import { _CONCEPT } from "./0_1_concept.type.js";
         for (const principleName in this.principles) {
             const principle = this.principles[principleName];
             
-            this.qualities[principleName] = principle(this);
+            this.qualities[principleName as string] = principle(this);
         }
 
         return output;
