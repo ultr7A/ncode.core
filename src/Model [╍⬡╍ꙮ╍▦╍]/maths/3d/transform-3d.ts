@@ -4,12 +4,12 @@ import { Identity_Matrix4, Matrix4 } from "../matrix/matrix-4.js";
 
 export function rotateX(angle: number): Matrix4 {
     const sine = Math.sin(angle), cosine = Math.cos(angle);
-    // This should be a JS Array instead of ecs ArrayObject
+    
     return [
-        1, 0, 0, 0,
-        0, cosine, -sine, 0,
-        0, sine, cosine, 0,
-        0, 0, 0, 1
+        1,      0,      0, 0,
+        0, cosine,  -sine, 0,
+        0,   sine, cosine, 0,
+        0,      0,      0, 1
     ];
 }
 
@@ -17,10 +17,10 @@ export function rotateY(angle: number): Matrix4 {
     const sine = Math.sin(angle), cosine = Math.cos(angle);
     
     return [
-        cosine, 0, -sine, 0,
-        0, 1, 0, 0,
-        sine, 0, cosine, 0,
-        0, 0, 0, 1
+        cosine,  0,  -sine, 0,
+        0,       1,      0, 0,
+        sine,    0, cosine, 0,
+        0,       0,      0, 1
     ];
 }
 
@@ -29,9 +29,9 @@ export function rotateZ(angle: number): Matrix4 {
     
     return [
         cosine, -sine, 0, 0,
-        sine, cosine, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1
+        sine,  cosine, 0, 0,
+        0, 0,          1, 0,
+        0, 0,          0, 1
     ];
 }
 

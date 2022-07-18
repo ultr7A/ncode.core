@@ -1,6 +1,6 @@
 
 import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
-import { EObject, FunctionObject } from "../object/0_1_object-structure.js";
+import { EObject, FunctionObject } from "../object/0_0_object-structure.js";
 import { ClassMethodObject, ClassPropertyObject } from "../object/0_2_object-elements.js";
 import { _BuiltinFunctionObject, ClassifiedObject, ConceptObject, ErrorObject, Hash, Integer, StreamObject } from "../object/1_0_1_object.js";
 import { newError } from "./3_0_object-util.js";

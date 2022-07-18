@@ -1,5 +1,6 @@
 import { Evaluator }                    from "../../Domain [╍🌐╍🧭╍]/system/evaluator.js";
 import { ObjectType }                   from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
+import { AbstractEObject }              from "./0_1_object-root.js";
 import { IBlockStatement, IIdentifier, Node } from "../../Domain [╍🌐╍🧭╍]/syntax/0_1_0_structure-concept.js";
 import { STREAM_DIRECTION }             from "../../Domain [╍🌐╍🧭╍]/syntax/stream-direction.enum.js";
 import { StreamToken }                  from "../../Domain [╍🌐╍🧭╍]/syntax/stream.tokens.enum.js";
@@ -8,43 +9,43 @@ import { Optimizer }                    from "../../Domain [╍🌐╍🧭╍]/s
 import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
 import { listOfObjectsToNativeList, nativeValueToECSValue } from "../util/3_0_object-util.js";
 import { assertBuiltinArgs } from "../util/3_builtin_util.js";
-import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_1_object-structure.js";
+import { InMemoryScalar, EObject, DynamicFunction, BuiltinFunction, FunctionObject, SequenceObject, StructureObject, Hashable, InspectionType } from "./0_0_object-structure.js";
 import { ClassMethodObject, ClassPropertyObject, ConceptOperatorObject, GraphEdgeObject, GraphNodeObject, IGraphObject } from "./0_2_object-elements.js";
 import { AbstractGraphObject } from "./0_3_abstract-graph-object.js";
 import { Environment } from "./1_4_0_environment.js";
 
 
 
-export class Null implements InMemoryScalar {
+export class Null extends AbstractEObject implements InMemoryScalar {
     public readonly Value = null;
-    constructor() { }
+    constructor() { super(); }
     public Type() { return ObjectType.NULL };
     public Inspect() { return null; }
 }
 
-export class Integer implements InMemoryScalar, Hashable {
-    constructor(public Value: number) { }
+export class Integer extends AbstractEObject implements InMemoryScalar, Hashable {
+    constructor(public Value: number) { super(); }
     public Inspect() { return this.Value; };
     public Type() { return ObjectType.INTEGER_OBJ };
     public HashKey() { return "" + this.Value; }
 }
 
-export class Float implements InMemoryScalar, Hashable {
-    constructor(public Value: number) { }
+export class Float extends AbstractEObject implements InMemoryScalar, Hashable {
+    constructor(public Value: number) { super(); }
     public Inspect() { return this.Value; };
     public Type() { return ObjectType.FLOAT };
     public HashKey() { return "" + this.Value; }
 }
 
-export class BooleanObject implements InMemoryScalar, Hashable {
-    constructor(public Value: boolean) { }
+export class BooleanObject extends AbstractEObject implements InMemoryScalar, Hashable {
+    constructor(public Value: boolean) { super(); }
     public Type() { return ObjectType.BOOLEAN };
     public Inspect() { return this.Value; };
     public HashKey() { return "" + (this.Value ? 1 : 0); }
 }
 
-export class StringObject implements InMemoryScalar, Hashable {
-    constructor(public Value: string) { }
+export class StringObject extends AbstractEObject implements InMemoryScalar, Hashable {
+    constructor(public Value: string) { super(); }
 
     public Type() { return ObjectType.STRING }
 
@@ -52,8 +53,8 @@ export class StringObject implements InMemoryScalar, Hashable {
     public HashKey() { return "" + this.Value.substr(0, 16); }
 }
 
-export class ReturnValue implements EObject {
-    constructor(public Value: EObject) { }
+export class ReturnValue extends AbstractEObject  {
+    constructor(public Value: EObject) { super(); }
     public Type() { return ObjectType.RETURN_VALUE };
     public Inspect() { return this.Value.Inspect(); }
 };
@@ -257,8 +258,10 @@ export class StreamObject implements SequenceObject<EObject> {
 }
 
 
-export class ArrayObject implements SequenceObject<EObject> {
-    constructor(public Elements: EObject[]) { }
+export class ArrayObject extends AbstractEObject 
+                         implements SequenceObject<EObject> {
+
+    constructor(public Elements: EObject[]) { super(); }
 
     public Type() { return ObjectType.ARRAY }
 
@@ -314,7 +317,7 @@ export class Hash implements StructureObject<string, EObject> {
     }
 }
 
-export class ClassifiedObject implements EObject {
+export class ClassifiedObject extends AbstractEObject {
     constructor(
         public Constructor: FunctionObject, 
         public className?:  string, 
@@ -327,7 +330,7 @@ export class ClassifiedObject implements EObject {
         public Properties: {
             [key: string]: ClassPropertyObject;
         } = {}
-    ) { }
+    ) { super(); }
 
     public Inspect(indentLevel = 1): string {
 
@@ -344,10 +347,10 @@ export class ClassifiedObject implements EObject {
     public Type() { return ObjectType.CLASSIFIED_OBJECT; }
 }
 
-export class WheelObject implements StructureObject<number, EObject> {
+export class WheelObject extends AbstractEObject implements StructureObject<number, EObject> {
     constructor(
         public Elements: { [angle: number]: EObject } 
-    ) { }
+    ) { super(); }
 
     public Inspect(indentLevel = 1): string {
         return "TODO: Inspect WheelObject";
@@ -357,10 +360,10 @@ export class WheelObject implements StructureObject<number, EObject> {
 }
 
 
-export class MobiusObject implements StructureObject<number, EObject> {
+export class MobiusObject extends AbstractEObject implements StructureObject<number, EObject> {
     constructor(
         public Elements: { [angle: number]: EObject }
-    ) { }
+    ) { super(); }
 
     public Inspect(indentLevel = 1): string {
         return "TODO: Inspect MobiusObject";
@@ -369,7 +372,7 @@ export class MobiusObject implements StructureObject<number, EObject> {
     public Type() { return ObjectType.MOBIUS_OBJECT; }
 }
 
-export class GraphObject extends AbstractGraphObject<EObject> 
+export class GraphObject  extends AbstractGraphObject<EObject> 
     implements EObject, IGraphObject<EObject, GraphOperator> {
     constructor(
         public Nodes: GraphNodeObject<EObject, GraphOperator>[],
@@ -403,8 +406,8 @@ export class ConceptObject extends AbstractGraphObject<ConceptObject, ConceptOpe
 }
 
 
-export class ErrorObject implements EObject {
-    constructor(public Message: string) { }
+export class ErrorObject extends AbstractEObject  {
+    constructor(public Message: string) { super(); }
 
     public Type() { return ObjectType.ERROR };
     public Inspect() { return "💀  RUNTIME ERROR: " + this.Message; }

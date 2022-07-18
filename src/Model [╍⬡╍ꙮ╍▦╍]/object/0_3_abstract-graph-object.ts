@@ -1,14 +1,24 @@
+import { ObjectType } from "../../Domain [╍🌐╍🧭╍]/object/object-type.enum.js";
 import { GraphOperator } from "../syntax/1_1_0_expression-elements.js";
-import { EObject } from "./0_1_object-structure.js";
+import { EObject } from "./0_0_object-structure.js";
+import { AbstractEObject } from "./0_1_object-root.js";
 import { GraphNodeObject, GraphEdgeObject } from "./0_2_object-elements.js";
 
-export class AbstractGraphObject<V extends EObject = EObject, O = GraphOperator> {
+export abstract class   AbstractGraphObject
+                        <
+                              V extends EObject = EObject, 
+                              O = GraphOperator
+                        >
+                extends AbstractEObject 
+{
     protected idCounter = 0;
 
     constructor(
         public Nodes: GraphNodeObject<V, O>[],
         public Edges: GraphEdgeObject<V, O>[]
-    ) { }
+    ) { 
+        super();
+    }
 
     public addNode(object: V, id?: string): void {
         this.Nodes.push(new GraphNodeObject<V, O>(this, object, id || (this.idCounter++) + ""))
@@ -37,4 +47,6 @@ export class AbstractGraphObject<V extends EObject = EObject, O = GraphOperator>
 
         return out;
     }
+
+    abstract Type(): ObjectType;
 }
