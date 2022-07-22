@@ -8,6 +8,7 @@ export enum DataType {
     HASH = "hash",
     ARRAY = "array",
     NULL = "null",
+    VOID = "void",
     CLASS_DEFINITION = "class",
     CLASSIFIED_OBJECT = "object",
     FUNCTION = "function"

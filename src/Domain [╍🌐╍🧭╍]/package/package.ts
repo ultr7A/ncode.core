@@ -4,9 +4,10 @@ export class Package {
     author:  string;
     version: string;
     
-    moduleRoot: "./dist"
-    dependencies: [];
-    devDependencies: [];
+    moduleRoot = "./dist";
+    sourceRoot = "./source";
+    dependencies = [];
+    devDependencies = [];
     
-    pluginConfig: {[pluginName: string]: any }
+    pluginConfig: {[pluginName: string]: any } = {}
 }

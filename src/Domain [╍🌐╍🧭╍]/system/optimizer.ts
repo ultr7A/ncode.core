@@ -1,4 +1,4 @@
-import { DynamicFunction }   from "../../Model [╍⬡╍ꙮ╍▦╍]/object/0_1_object-structure.js";
+import { DynamicFunction }   from "../../Model [╍⬡╍ꙮ╍▦╍]/object/0_0_object-structure.js";
 import { ClassifiedObject }  from "../../Model [╍⬡╍ꙮ╍▦╍]/object/1_0_1_object.js";
 import { Environment }       from "../../Model [╍⬡╍ꙮ╍▦╍]/object/1_4_0_environment.js";
 import { ParseTreeAnalysis } from "../4_0_0_meta.js";
