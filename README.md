@@ -1,3 +1,3 @@
-# Wrapt.co_re
+# ultr7A/ncode.core
 
-Shared domain model and utilities for wrapt.org programming language.
+Shared domain model and utilities for ultr7A/ncode sin(aesthe_tech) programming language.
